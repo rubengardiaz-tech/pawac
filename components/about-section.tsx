@@ -1,136 +1,16 @@
-// Sección "Quiénes somos": descripción, misión, fines, tarjetas de actividad y dirección.
-import {
-  Microscope,
-  Users,
-  GraduationCap,
-  Sprout,
-  MapPin,
-  Check,
-} from 'lucide-react'
+'use client'
+
+import { Microscope, Users, GraduationCap, Sprout, MapPin, Check } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useLanguage } from '@/components/language-context'
 
-// Cuatro ejes de trabajo de la asociación
-const PILLARS = [
-  {
-    icon: Microscope,
-    title: 'Investigación',
-    text: 'Estudios sobre construcción de paz basada en las artes desde una mirada decolonial.',
-  },
-  {
-    icon: Users,
-    title: 'Encuentros',
-    text: 'Espacios de diálogo intercultural, foros y seminarios abiertos a la comunidad.',
-  },
-  {
-    icon: GraduationCap,
-    title: 'Formación',
-    text: 'Educación para la paz, la no violencia y la mediación en todas las etapas de la vida.',
-  },
-  {
-    icon: Sprout,
-    title: 'Proyectos de campo',
-    text: 'Iniciativas comunitarias de cohesión social, justicia social y apoyo a víctimas.',
-  },
-]
-
-// Fines principales de la asociación
-const GOALS = [
-  'Fomentar la educación para la paz y la no violencia en todas las etapas de la vida.',
-  'Promover el diálogo intercultural y el respeto a los derechos humanos.',
-  'Desarrollar habilidades de mediación y resolución pacífica de conflictos.',
-  'Impulsar proyectos comunitarios de cohesión social, justicia social y apoyo a víctimas de violencia.',
-  'Realizar campañas de sensibilización, foros, seminarios y alianzas estratégicas.',
-  'Contribuir a sociedades más pacíficas y a la reducción de la violencia.',
-]
+const copy = {
+  es: { eyebrow: 'Sobre nosotros', title: 'Quiénes somos', intro: 'La Asociación PAWAC (Peacebuilding Also With Art and Culture) es una asociación cultural sin ánimo de lucro, de ámbito principalmente canario, constituida por tiempo indefinido bajo la Ley Orgánica 1/2002 reguladora del Derecho de Asociación.', mission: 'Misión e impacto', missionText: ['PAWAC (Peacebuilding Also With Arts & Culture) es una asociación cultural sin ánimo de lucro dedicada a la construcción de paz a través del arte y la cultura. Desde Lanzarote, con proyección internacional, trabajamos mediante la investigación, la mediación artística, los encuentros, la formación y los proyectos de campo para fortalecer la cohesión social, el diálogo intercultural y la resolución pacífica de conflictos.', 'Todas nuestras acciones se orientan a crear espacios seguros de encuentro y participación, fortalecer la cohesión social como forma de prevención de conflictos y promover la paz como valor central a través de las prácticas artísticas y culturales.', 'Nuestro objetivo es contribuir a comunidades más inclusivas, cohesionadas y capaces de abordar sus diferencias de manera pacífica, conectando la experiencia local, la investigación y la cooperación internacional.'], pillars: [['Investigación', 'Estudios sobre construcción de paz basada en las artes desde una mirada decolonial.'], ['Encuentros', 'Espacios de diálogo intercultural, foros y seminarios abiertos a la comunidad.'], ['Formación', 'Educación para la paz, la no violencia y la mediación en todas las etapas de la vida.'], ['Proyectos de campo', 'Iniciativas comunitarias de cohesión social, justicia social y apoyo a víctimas.']], goalsTitle: 'Fines principales', goals: ['Fomentar la educación para la paz y la no violencia en todas las etapas de la vida.', 'Promover el diálogo intercultural y el respeto a los derechos humanos.', 'Desarrollar habilidades de mediación y resolución pacífica de conflictos.', 'Impulsar proyectos comunitarios de cohesión social con métodos artísticos.', 'Realizar campañas de sensibilización, foros, seminarios y alianzas estratégicas.', 'Contribuir a sociedades más pacíficas y a la reducción de la violencia.'], location: 'Dónde estamos' },
+  en: { eyebrow: 'About us', title: 'Who we are', intro: 'PAWAC (Peacebuilding Also With Art and Culture) is a non-profit cultural association, primarily based in the Canary Islands, established indefinitely under Organic Law 1/2002 regulating the right of association.', mission: 'Mission and impact', missionText: ['PAWAC (Peacebuilding Also With Arts & Culture) is a non-profit cultural association dedicated to peacebuilding through arts and culture. From Lanzarote, with an international outlook, we work through research, artistic mediation, encounters, training and field projects to strengthen social cohesion, intercultural dialogue and the peaceful resolution of conflicts.', 'All our actions aim to create safe spaces for encounter and participation, strengthen social cohesion as a form of conflict prevention, and promote peace as a central value through artistic and cultural practices.', 'Our goal is to contribute to more inclusive and cohesive communities that can address their differences peacefully, connecting local experience, research and international cooperation.'], pillars: [['Research', 'Studies on arts-based peacebuilding from a decolonial perspective.'], ['Encounters', 'Spaces for intercultural dialogue, forums and seminars open to the community.'], ['Training', 'Education for peace, non-violence and mediation at every stage of life.'], ['Field projects', 'Community initiatives for social cohesion, social justice and support for victims.']], goalsTitle: 'Our main aims', goals: ['Promote education for peace and non-violence at every stage of life.', 'Promote intercultural dialogue and respect for human rights.', 'Develop mediation and peaceful conflict-resolution skills.', 'Advance community projects for social cohesion using artistic methods.', 'Run awareness campaigns, forums, seminars and strategic partnerships.', 'Contribute to more peaceful societies and the reduction of violence.'], location: 'Where we are' },
+}
+const icons = [Microscope, Users, GraduationCap, Sprout]
 
 export function AboutSection() {
-  return (
-    <section id="sobre-nosotros" className="bg-background py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-accent">
-            Sobre nosotros
-          </p>
-          <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            Quiénes somos
-          </h2>
-        </div>
-
-        {/* Descripción y misión */}
-        <div className="mx-auto mt-8 max-w-3xl space-y-5 text-pretty leading-relaxed text-muted-foreground">
-          <p>
-            La <strong className="text-foreground">Asociación PAWAC</strong> (Peacebuilding
-            Also With Art and Culture) es una asociación cultural sin ánimo de lucro,
-            de ámbito principalmente canario, constituida por tiempo indefinido bajo la
-            Ley Orgánica 1/2002 reguladora del Derecho de Asociación.
-          </p>
-          <p>
-            Su misión central es generar una cultura avanzada de construcción de paz
-            basada en las artes (Arts-Based Peacebuilding) de forma decolonial,
-            participativa, interdisciplinaria, transdisciplinaria, unificada y plural.
-            Trabaja mediante investigaciones, encuentros, formación y proyectos de campo.
-          </p>
-          <p>
-            PAWAC está formada por socios —de número, honor, mérito, fundadores y
-            protectores/colaboradores— y se rige por una Junta Directiva y una Asamblea
-            General. Todas sus acciones se orientan a crear espacios seguros, fortalecer
-            la cohesión social y promover la paz como valor central a través del arte y
-            la cultura.
-          </p>
-        </div>
-
-        {/* Tarjetas: los cuatro ejes de trabajo */}
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {PILLARS.map((pillar) => (
-            <Card key={pillar.title} className="border-border bg-card transition-shadow hover:shadow-md">
-              <CardHeader className="items-start gap-3">
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <pillar.icon className="h-6 w-6" />
-                </span>
-                <CardTitle className="text-lg text-foreground">{pillar.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm leading-relaxed text-muted-foreground">
-                {pillar.text}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Fines principales + dirección */}
-        <div className="mt-14 grid gap-8 lg:grid-cols-5">
-          <div className="lg:col-span-3">
-            <h3 className="text-xl font-semibold text-foreground">Fines principales</h3>
-            <ul className="mt-5 space-y-3">
-              {GOALS.map((goal) => (
-                <li key={goal} className="flex gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-                    <Check className="h-4 w-4" />
-                  </span>
-                  <span className="text-pretty leading-relaxed text-muted-foreground">
-                    {goal}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Tarjeta de dirección */}
-          <Card className="border-border bg-secondary/20 lg:col-span-2">
-            <CardHeader className="gap-3">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/15 text-accent">
-                <MapPin className="h-6 w-6" />
-              </span>
-              <CardTitle className="text-lg text-foreground">Dónde estamos</CardTitle>
-            </CardHeader>
-            <CardContent className="leading-relaxed text-muted-foreground">
-              <p className="font-medium text-foreground">Asociación PAWAC</p>
-              <p>Calle Perdiz 9</p>
-              <p>35560 Tinajo</p>
-              <p>Lanzarote, Islas Canarias, España</p>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    </section>
-  )
+  const { language } = useLanguage(); const t = copy[language]
+  return <section id="sobre-nosotros" className="bg-background py-20 md:py-28"><div className="mx-auto max-w-6xl px-4"><div className="mx-auto max-w-3xl text-center"><p className="text-sm font-semibold uppercase tracking-wider text-accent">{t.eyebrow}</p><h2 className="mt-2 text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">{t.title}</h2></div><div className="mx-auto mt-8 max-w-3xl space-y-5 text-pretty leading-relaxed text-muted-foreground"><p>{t.intro}</p><div className="rounded-2xl border border-primary/20 bg-primary/5 p-6"><h3 className="text-lg font-semibold text-foreground">{t.mission}</h3>{t.missionText.map((text) => <p key={text} className="mt-3">{text}</p>)}</div></div><div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">{t.pillars.map(([title, text], i) => { const Icon = icons[i]; return <Card key={title} className="border-border bg-card transition-shadow hover:shadow-md"><CardHeader className="items-start gap-3"><span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary"><Icon className="h-6 w-6" /></span><CardTitle className="text-lg text-foreground">{title}</CardTitle></CardHeader><CardContent className="text-sm leading-relaxed text-muted-foreground">{text}</CardContent></Card> })}</div><div className="mt-14 grid gap-8 lg:grid-cols-5"><div className="lg:col-span-3"><h3 className="text-xl font-semibold text-foreground">{t.goalsTitle}</h3><ul className="mt-5 flex flex-col gap-3">{t.goals.map((goal) => <li key={goal} className="flex gap-3"><span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary"><Check className="h-4 w-4" /></span><span className="text-pretty leading-relaxed text-muted-foreground">{goal}</span></li>)}</ul></div><Card className="border-border bg-secondary/20 lg:col-span-2"><CardHeader className="gap-3"><span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/15 text-accent"><MapPin className="h-6 w-6" /></span><CardTitle className="text-lg text-foreground">{t.location}</CardTitle></CardHeader><CardContent className="leading-relaxed text-muted-foreground"><p className="font-medium text-foreground">Asociación PAWAC</p><p>C/ Perdiz, Nº 9</p><p>35560 Tinajo</p><p>Lanzarote, Islas Canarias, España</p></CardContent></Card></div></div></section>
 }
