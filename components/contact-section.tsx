@@ -144,11 +144,18 @@ export function ContactSection() {
                 </Button>
               </div>
 
-              {/* Dirección postal */}
-              <p className="flex items-start gap-2 text-sm text-muted-foreground">
+              {/* Datos legales y domicilio postal */}
+              <div className="flex items-start gap-2 text-sm leading-relaxed text-muted-foreground">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                También puedes escribirnos a Calle Perdiz 9, 35560 Tinajo (Lanzarote).
-              </p>
+                <address className="not-italic">
+                  <p className="font-medium text-foreground">
+                    Asociación PEACEBUILDING ALSO WITH ART AND CULTURE (PAWAC)
+                  </p>
+                  <p>Número de Registro: 27248 (G1/S1/27248-24/L)</p>
+                  <p>Registro de Asociaciones de Canarias</p>
+                  <p>Domicilio social: C/ Perdiz, Nº 9, Tinajo – 35560, Lanzarote, Islas Canarias, España</p>
+                </address>
+              </div>
 
               {/* Nota de privacidad */}
               <p className="flex items-start gap-2 text-xs text-muted-foreground">

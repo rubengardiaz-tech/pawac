@@ -64,12 +64,17 @@ export function AboutSection() {
             de ámbito principalmente canario, constituida por tiempo indefinido bajo la
             Ley Orgánica 1/2002 reguladora del Derecho de Asociación.
           </p>
-          <p>
-            Su misión central es generar una cultura avanzada de construcción de paz
-            basada en las artes (Arts-Based Peacebuilding) de forma decolonial,
-            participativa, interdisciplinaria, transdisciplinaria, unificada y plural.
-            Trabaja mediante investigaciones, encuentros, formación y proyectos de campo.
-          </p>
+          <div className="rounded-2xl border border-primary/20 bg-primary/5 p-6">
+            <h3 className="text-lg font-semibold text-foreground">Misión e impacto</h3>
+            <p className="mt-3">
+              PAWAC es una asociación cultural sin ánimo de lucro dedicada a la
+              construcción de paz a través del arte y la cultura. Trabajamos mediante
+              investigación, mediación artística, encuentros, formación y proyectos de
+              campo para fortalecer la cohesión social, el diálogo intercultural y la
+              resolución pacífica de conflictos, especialmente desde Lanzarote y con
+              proyección internacional.
+            </p>
+          </div>
           <p>
             PAWAC está formada por socios —de número, honor, mérito, fundadores y
             protectores/colaboradores— y se rige por una Junta Directiva y una Asamblea

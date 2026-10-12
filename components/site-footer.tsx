@@ -30,17 +30,22 @@ export function SiteFooter() {
             </p>
           </div>
 
-          {/* Dirección */}
+          {/* Datos legales y domicilio */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-background/90">
-              Dónde estamos
+              Datos legales
             </h3>
-            <address className="mt-4 space-y-1 text-sm not-italic leading-relaxed text-background/70">
-              <p>Asociación PAWAC</p>
-              <p>Calle Perdiz 9</p>
-              <p>35560 Tinajo</p>
-              <p>Lanzarote, Islas Canarias, España</p>
-            </address>
+            <div className="mt-4 text-sm leading-relaxed text-background/70">
+              <p className="font-medium text-background/90">
+                Asociación PEACEBUILDING ALSO WITH ART AND CULTURE (PAWAC)
+              </p>
+              <p className="mt-2">Número de Registro: 27248 (G1/S1/27248-24/L)</p>
+              <p>Registro de Asociaciones de Canarias</p>
+              <address className="mt-2 not-italic">
+                Domicilio social: C/ Perdiz, Nº 9, Tinajo – 35560, Lanzarote,
+                Islas Canarias, España
+              </address>
+            </div>
           </div>
 
           {/* Enlaces */}
