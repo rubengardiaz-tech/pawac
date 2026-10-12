@@ -78,8 +78,8 @@ export function SiteHeader() {
         <div className="hidden items-center gap-2 lg:flex">
           <Languages className="size-4 text-primary" aria-hidden="true" />
           <div className="flex rounded-full border border-border bg-background/80 p-1 text-xs font-semibold" aria-label="Language selector">
-            <button type="button" onClick={() => setLanguage('es')} className={`rounded-full px-2 py-1 ${!isEnglish ? 'bg-primary text-primary-foreground' : 'text-muted-foreground'}`}>ES</button>
-            <button type="button" onClick={() => setLanguage('en')} className={`rounded-full px-2 py-1 ${isEnglish ? 'bg-primary text-primary-foreground' : 'text-muted-foreground'}`}>EN</button>
+            <button type="button" onClick={() => setLanguage('es')} aria-pressed={!isEnglish} className={`rounded-full px-2 py-1 ${!isEnglish ? 'bg-primary text-primary-foreground' : 'text-muted-foreground'}`}>ES</button>
+            <button type="button" onClick={() => setLanguage('en')} aria-pressed={isEnglish} className={`rounded-full px-2 py-1 ${isEnglish ? 'bg-primary text-primary-foreground' : 'text-muted-foreground'}`}>EN</button>
           </div>
         </div>
 
