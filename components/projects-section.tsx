@@ -1,84 +1,10 @@
-// Sección "Nuestros proyectos": tarjetas de investigaciones y proyectos de campo.
-import {
-  Palette,
-  MessagesSquare,
-  Sun,
-  HandHeart,
-  BookOpen,
-  Handshake,
-} from 'lucide-react'
+'use client'
+
+import { Palette, MessagesSquare, Sun, HandHeart, BookOpen, Handshake } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useLanguage } from '@/components/language-context'
 
-// Ejemplos de proyectos coherentes con la misión de la asociación
-const PROJECTS = [
-  {
-    icon: Palette,
-    title: 'Mediación artística en escuelas',
-    text: 'Talleres de arte que enseñan a niñas y niños a resolver conflictos sin violencia.',
-  },
-  {
-    icon: MessagesSquare,
-    title: 'Foros de diálogo intercultural',
-    text: 'Encuentros abiertos donde distintas culturas comparten memoria, música y palabra.',
-  },
-  {
-    icon: Sun,
-    title: 'Taller «Los Soles de la Vida»',
-    text: 'Proceso creativo colectivo para sanar y reconstruir el tejido comunitario.',
-  },
-  {
-    icon: HandHeart,
-    title: 'Acompañamiento a víctimas',
-    text: 'Espacios seguros de expresión artística para personas afectadas por la violencia.',
-  },
-  {
-    icon: BookOpen,
-    title: 'Investigación decolonial',
-    text: 'Estudios transdisciplinarios sobre las artes como herramienta de paz en Canarias.',
-  },
-  {
-    icon: Handshake,
-    title: 'Alianzas por la paz',
-    text: 'Colaboraciones con instituciones públicas, educativas y organizaciones sociales.',
-  },
-]
+const copy = { es: { eyebrow: 'Proyectos e investigaciones', title: 'Nuestros proyectos', intro: 'Iniciativas que llevan el arte y la cultura al centro de la construcción de paz, desde la investigación hasta el trabajo directo con la comunidad.', items: [['Mediación artística en escuelas', 'Talleres de arte que enseñan a niñas y niños a resolver conflictos sin violencia.'], ['Foros de diálogo intercultural', 'Encuentros abiertos donde distintas culturas comparten memoria, música y palabra.'], ['Taller «Los Soles de la Vida»', 'Proceso creativo colectivo para sanar y reconstruir el tejido comunitario.'], ['Acompañamiento a víctimas', 'Espacios seguros de expresión artística para personas afectadas por la violencia.'], ['Investigación decolonial', 'Estudios transdisciplinarios sobre las artes como herramienta de paz en Canarias.'], ['Alianzas por la paz', 'Colaboraciones con instituciones públicas, educativas y organizaciones sociales.']] }, en: { eyebrow: 'Projects and research', title: 'Our projects', intro: 'Initiatives that place arts and culture at the heart of peacebuilding, from research to direct work with communities.', items: [['Arts mediation in schools', 'Art workshops that teach children to resolve conflicts without violence.'], ['Intercultural dialogue forums', 'Open encounters where different cultures share memory, music and stories.'], ['The Suns of Life workshop', 'A collective creative process to heal and rebuild the community fabric.'], ['Support for victims', 'Safe spaces for artistic expression for people affected by violence.'], ['Decolonial research', 'Transdisciplinary studies on the arts as a peacebuilding tool in the Canary Islands.'], ['Peace partnerships', 'Collaboration with public, educational and social organisations.']] } }
+const icons = [Palette, MessagesSquare, Sun, HandHeart, BookOpen, Handshake]
 
-export function ProjectsSection() {
-  return (
-    <section id="proyectos" className="bg-dots bg-muted/40 py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-accent">
-            Proyectos e investigaciones
-          </p>
-          <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            Nuestros proyectos
-          </h2>
-          <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
-            Iniciativas que llevan el arte y la cultura al centro de la construcción de
-            paz, desde la investigación hasta el trabajo directo con la comunidad.
-          </p>
-        </div>
-
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {PROJECTS.map((project) => (
-            <Card
-              key={project.title}
-              className="group border-border bg-card transition-shadow hover:shadow-lg"
-            >
-              <CardHeader className="gap-3">
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/15 text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
-                  <project.icon className="h-6 w-6" />
-                </span>
-                <CardTitle className="text-lg text-foreground">{project.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm leading-relaxed text-muted-foreground">
-                {project.text}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
+export function ProjectsSection() { const { language } = useLanguage(); const t = copy[language]; return <section id="proyectos" className="bg-dots bg-muted/40 py-20 md:py-28"><div className="mx-auto max-w-6xl px-4"><div className="mx-auto max-w-3xl text-center"><p className="text-sm font-semibold uppercase tracking-wider text-accent">{t.eyebrow}</p><h2 className="mt-2 text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">{t.title}</h2><p className="mt-4 text-pretty leading-relaxed text-muted-foreground">{t.intro}</p></div><div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{t.items.map(([title, text], i) => { const Icon = icons[i]; return <Card key={title} className="group border-border bg-card transition-shadow hover:shadow-lg"><CardHeader className="gap-3"><span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/15 text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground"><Icon className="h-6 w-6" /></span><CardTitle className="text-lg text-foreground">{title}</CardTitle></CardHeader><CardContent className="text-sm leading-relaxed text-muted-foreground">{text}</CardContent></Card> })}</div></div></section> }
