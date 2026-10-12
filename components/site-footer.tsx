@@ -1,15 +1,14 @@
+'use client'
+
 // Pie de página con logo, dirección, enlaces y nota legal.
 import { PawacLogo } from '@/components/pawac-logo'
+import { useLanguage } from '@/components/language-context'
 
-const FOOTER_LINKS = [
-  { href: '#inicio', label: 'Inicio' },
-  { href: '#sobre-nosotros', label: 'Sobre nosotros' },
-  { href: '#proyectos', label: 'Proyectos' },
-  { href: '#testimonios', label: 'Testimonios' },
-  { href: '#contacto', label: 'Contacto' },
-]
+const FOOTER_LINKS = [{ href: '#inicio', es: 'Inicio', en: 'Home' }, { href: '#sobre-nosotros', es: 'Sobre nosotros', en: 'About us' }, { href: '#proyectos', es: 'Proyectos', en: 'Projects' }, { href: '#proyecto-internacional', es: 'Proyecto internacional', en: 'International project' }, { href: '#contacto', es: 'Contacto', en: 'Contact' }]
 
 export function SiteFooter() {
+  const { language } = useLanguage()
+  const english = language === 'en'
   return (
     <footer className="bg-foreground text-background">
       <div className="mx-auto max-w-6xl px-4 py-14">
@@ -50,13 +49,10 @@ export function SiteFooter() {
               Navegación
             </h3>
             <ul className="mt-4 space-y-2 text-sm">
-              {FOOTER_LINKS.map((link) => (
+{FOOTER_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-background/70 transition-colors hover:text-background"
-                  >
-                    {link.label}
+                  <a href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                    {english ? link.en : link.es}
                   </a>
                 </li>
               ))}

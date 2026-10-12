@@ -3,22 +3,23 @@
 // Cabecera fija con navegación responsive.
 // En móvil se muestra un menú hamburguesa; en escritorio, los enlaces en línea.
 import { useEffect, useState } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Languages } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useLanguage } from '@/components/language-context'
 import { PawacLogo } from '@/components/pawac-logo'
 
 // Enlaces de navegación (todos apuntan a secciones de la misma página)
-const NAV_LINKS = [
-  { href: '#inicio', label: 'Inicio' },
-  { href: '#sobre-nosotros', label: 'Sobre nosotros' },
-  { href: '#proyectos', label: 'Proyectos' },
-  { href: '#testimonios', label: 'Testimonios' },
-  { href: '#contacto', label: 'Contacto' },
-]
+const NAV_LINKS = {
+  es: [{ href: '#inicio', label: 'Inicio' }, { href: '#sobre-nosotros', label: 'Sobre nosotros' }, { href: '#proyectos', label: 'Proyectos' }, { href: '#proyecto-internacional', label: 'Proyecto internacional' }, { href: '#contacto', label: 'Contacto' }],
+  en: [{ href: '#inicio', label: 'Home' }, { href: '#sobre-nosotros', label: 'About us' }, { href: '#proyectos', label: 'Projects' }, { href: '#proyecto-internacional', label: 'International project' }, { href: '#contacto', label: 'Contact' }],
+}
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { language, setLanguage } = useLanguage()
+  const links = NAV_LINKS[language]
+  const isEnglish = language === 'en'
 
   // Añade sombra/fondo sólido a la cabecera al hacer scroll
   useEffect(() => {
@@ -52,7 +53,7 @@ export function SiteHeader() {
 
         {/* Navegación de escritorio */}
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Navegación principal">
-          {NAV_LINKS.map((link) => (
+          {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -72,6 +73,14 @@ export function SiteHeader() {
           >
             Únete / Contacta
           </Button>
+        </div>
+
+        <div className="hidden items-center gap-2 lg:flex">
+          <Languages className="size-4 text-primary" aria-hidden="true" />
+          <div className="flex rounded-full border border-border bg-background/80 p-1 text-xs font-semibold" aria-label="Language selector">
+            <button type="button" onClick={() => setLanguage('es')} className={`rounded-full px-2 py-1 ${!isEnglish ? 'bg-primary text-primary-foreground' : 'text-muted-foreground'}`}>ES</button>
+            <button type="button" onClick={() => setLanguage('en')} className={`rounded-full px-2 py-1 ${isEnglish ? 'bg-primary text-primary-foreground' : 'text-muted-foreground'}`}>EN</button>
+          </div>
         </div>
 
         {/* Botón del menú móvil */}
@@ -95,7 +104,7 @@ export function SiteHeader() {
           aria-label="Navegación móvil"
         >
           <ul className="flex flex-col gap-1">
-            {NAV_LINKS.map((link) => (
+            {links.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
