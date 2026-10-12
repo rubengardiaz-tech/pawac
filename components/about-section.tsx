@@ -67,21 +67,25 @@ export function AboutSection() {
           <div className="rounded-2xl border border-primary/20 bg-primary/5 p-6">
             <h3 className="text-lg font-semibold text-foreground">Misión e impacto</h3>
             <p className="mt-3">
-              PAWAC es una asociación cultural sin ánimo de lucro dedicada a la
-              construcción de paz a través del arte y la cultura. Trabajamos mediante
-              investigación, mediación artística, encuentros, formación y proyectos de
-              campo para fortalecer la cohesión social, el diálogo intercultural y la
-              resolución pacífica de conflictos, especialmente desde Lanzarote y con
-              proyección internacional.
+              PAWAC (Peacebuilding Also With Arts &amp; Culture) es una asociación cultural
+              sin ánimo de lucro dedicada a la construcción de paz a través del arte y la
+              cultura. Desde Lanzarote, con proyección internacional, trabajamos mediante
+              la investigación, la mediación artística, los encuentros, la formación y
+              los proyectos de campo para fortalecer la cohesión social, el diálogo
+              intercultural y la resolución pacífica de conflictos.
+            </p>
+            <p className="mt-3">
+              Todas nuestras acciones se orientan a crear espacios seguros de encuentro y
+              participación, fortalecer la cohesión social como forma de prevención de
+              conflictos y promover la paz como valor central a través de las prácticas
+              artísticas y culturales.
+            </p>
+            <p className="mt-3">
+              Nuestro objetivo es contribuir a comunidades más inclusivas, cohesionadas y
+              capaces de abordar sus diferencias de manera pacífica, conectando la
+              experiencia local, la investigación y la cooperación internacional.
             </p>
           </div>
-          <p>
-            PAWAC está formada por socios —de número, honor, mérito, fundadores y
-            protectores/colaboradores— y se rige por una Junta Directiva y una Asamblea
-            General. Todas sus acciones se orientan a crear espacios seguros, fortalecer
-            la cohesión social y promover la paz como valor central a través del arte y
-            la cultura.
-          </p>
         </div>
 
         {/* Tarjetas: los cuatro ejes de trabajo */}
